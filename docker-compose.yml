@@ -1,0 +1,19 @@
+version: '2'
+services:
+  fdfs-web:
+    image: python:3.11-slim
+    environment:
+      ADMIN_PASSWORD: 123456
+      SECRET_KEY: a0bv16d4ef3gh120ijk33lm6e5no2p87
+    stdin_open: true
+    volumes:
+    - /opt/fdfs:/opt/fdfs
+    tty: true
+    ports:
+    - 8088:8088/tcp
+    command:
+    - sh
+    - -c
+    - pip install flask gunicorn -q &&          gunicorn -w 1 -b 0.0.0.0:8088 --timeout 300 --chdir /opt/fdfs app:app
+    labels:
+      io.rancher.container.pull_image: always
