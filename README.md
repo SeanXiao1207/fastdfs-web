@@ -2,7 +2,9 @@
 一个fastdfs的页面程序
 
 # 项目架构
-一般是和fastdfs一起部署，也就是docker-compose.yml
+### 一般是和fastdfs一起部署，也就是docker-compose.yml分别定义了fastdfs-web、tracker、storage0 三个容器；
+### 然后fastdfs-web 中 sh -c "pip install flask gunicorn -q && gunicorn -w 1 -b 0.0.0.0:8088 --timeout 300 --chdir /opt/fdfs app:app" 就会找宿主机/opt/fdfs/app.py文件运行；
+### 由此 服务器 /opt/fdfs/ 目录需要放app.py文件（同时还是fastdfs 数据存储目录），然后运行 docker compose up -d 在 docker-compose.yml 文件所在目录。
 
 # 界面
 登录
