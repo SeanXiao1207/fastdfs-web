@@ -6,6 +6,9 @@
 ### 然后fastdfs-web 中 sh -c "pip install flask gunicorn -q && gunicorn -w 1 -b 0.0.0.0:8088 --timeout 300 --chdir /opt/fdfs app:app" 就会找宿主机/opt/fdfs/app.py文件运行；
 ### 由此 服务器 /opt/fdfs/ 目录需要放app.py文件（同时还是fastdfs 数据存储目录），然后运行 docker compose up -d 在 docker-compose.yml 文件所在目录。
 
+### 这个 fastdfs-web的核心就是用一个python3容器，跑一个app.py的脚本，而这个脚本就是一个web程序。
+### 默认是绑定了8088端口，具体可以自行修改docker-compose.yml，其中还有加密等处理。
+
 # 界面
 登录
 <img width="1648" height="814" alt="image" src="https://github.com/user-attachments/assets/5b10b672-2b54-4c9b-a709-94e8dbdcd2f7" />
